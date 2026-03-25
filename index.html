@@ -1,0 +1,452 @@
+ <!DOCTYPE html>                                                                                                                                                                                           
+  <html lang="en">                                                                                                                                                                                          
+  <head>                                                                                                                                                                                                    
+      <meta charset="UTF-8">                                                                                                                                                                                
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Zendesk Persona Simulator | AI Content Analysis</title>                                                                                                                                        
+      <script src="https://cdn.tailwindcss.com"></script>                                                                                                                                                   
+      <script>                                                                                                                                                                                              
+          tailwind.config = {                                                                                                                                                                               
+              theme: {                                                                                                                                                                                      
+                  extend: {                                                                                                                                                                                 
+                      colors: {                                                                                                                                                                             
+                          'zendesk-navy': '#03363d',                                                                                                                                                        
+                          'zendesk-teal': '#17494D',                                                                                                                                                        
+                          'zendesk-green': '#0F8613',                                                                                                                                                       
+                      }                                                                                                                                                                                     
+                  }                                         
+              }                                                                                                                                                                                             
+          }                                                 
+      </script>
+      <style>
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+          body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+          @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          .fade-in { animation: fadeIn 0.5s ease-out; }
+          @keyframes pulse {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.6; }
+          }
+          .thinking { animation: pulse 1.5s ease-in-out infinite; }
+      </style>
+  </head>
+  <body class="bg-gray-50">
+      <!-- Header -->
+      <header class="bg-zendesk-navy text-white shadow-lg">
+          <div class="container mx-auto px-6 py-6">
+              <div class="flex items-center justify-between">                                                                                                                                               
+                  <div>
+                      <h1 class="text-3xl font-bold">Zendesk Persona Simulator</h1>                                                                                                                         
+                      <p class="text-gray-300 mt-1">Context-Aware AI Content Analysis</p>                                                                                                                   
+                  </div>                                                                                                                                                                                    
+                  <div class="text-right">                                                                                                                                                                  
+                      <span class="text-sm text-gray-400">Powered by</span>                                                                                                                                 
+                      <p class="text-lg font-semibold">Zendesk AI Gateway</p>                                                                                                                               
+                  </div>                                                                                                                                                                                    
+              </div>                                                                                                                                                                                        
+          </div>                                                                                                                                                                                            
+      </header>                                             
+                                                                                                                                                                                                            
+  
+      <!-- Main Content -->                                                                                                                                                                                 
+      <div class="container mx-auto px-6 py-6">             
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">                                                                                                                                               
+                                                                                                                                                                                                            
+              <!-- LEFT COLUMN: INPUTS -->                                                                                                                                                                  
+              <div class="space-y-6">                                                                                                                                                                       
+                  <h2 class="text-2xl font-bold text-zendesk-navy">Content Setup</h2>                                                                                                                       
+                                                                                                                                                                                                            
+                  <!-- Persona Selection -->                                                                                                                                                                
+                  <div class="bg-white rounded-lg shadow-md p-6">                                                                                                                                           
+                      <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">                                                                                                             
+                          <span>👤</span> Target Persona                                                                                                                                                    
+                      </h3>                                                                                                                                                                                 
+                      <div class="space-y-4">                                                                                                                                                               
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Persona Title/Role</label>                                                                                          
+                              <input type="text" id="persona" placeholder="e.g., VP of Customer Experience, CIO, Director of Support"                                                                       
+                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none">                                                    
+                          </div>                                                                                                                                                                            
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Segment</label>                                                                                                     
+                              <select id="segment" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none bg-white">                             
+                                  <option value="all">All Segments</option>                                                                                                                                 
+                                  <option value="digital">Digital (1-49 employees)</option>                                                                                                                 
+                                  <option value="corp">Corp (50-1,499 employees)</option>                                                                                                                   
+                                  <option value="ent">Enterprise (1,500+ employees)</option>                                                                                                                
+                              </select>                                                                                                                                                                     
+                          </div>                                                                                                                                                                            
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Additional Persona Context</label>                                                                                  
+                              <textarea id="persona-context" rows="4" placeholder="Optional: Add specific pain points, KPIs, decision criteria, or other context about this persona..."                     
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none text-sm"></textarea>                              
+                          </div>                                                                                                                                                                            
+                      </div>                                                                                                                                                                                
+                  </div>                                                                                                                                                                                    
+                                                                                                                                                                                                            
+                  <!-- Context -->                                                                                                                                                                          
+                  <div class="bg-white rounded-lg shadow-md p-6">                                                                                                                                           
+                      <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">                                                                                                             
+                          <span>🎯</span> Industry & Context                                                                                                                                                
+                      </h3>                                                                                                                                                                                 
+                      <div class="space-y-4">                                                                                                                                                               
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Industry</label>
+                              <select id="industry" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none bg-white">                            
+                                  <option value="all">All Industries</option>                                                                                                                               
+                                  <option value="retail">Retail</option>                                                                                                                                    
+                                  <option value="manufacturing">Manufacturing</option>                                                                                                                      
+                                  <option value="finance">Finance</option>                                                                                                                                  
+                                  <option value="media">Media and Entertainment</option>                                                                                                                    
+                                  <option value="government">Government</option>                                                                                                                            
+                                  <option value="healthcare">Healthcare</option>                                                                                                                            
+                                  <option value="technology">Technology</option>                                                                                                                            
+                                  <option value="consumer-services">Consumer Services</option>                                                                                                              
+                                  <option value="corporate-services">Corporate Services</option>                                                                                                            
+                              </select>                                                                                                                                                                     
+                          </div>                                                                                                                                                                            
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Relationship</label>                                                                                                
+                              <select id="relationship" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none bg-white">                        
+                                  <option value="prospect">Prospect (Comparing Solutions)</option>                                                                                                          
+                                  <option value="customer">Existing Customer</option>                                                                                                                       
+                                  <option value="churned">Churned Customer</option>                                                                                                                         
+                              </select>                                                                                                                                                                     
+                          </div>                                                                                                                                                                            
+                          <div>                                                                                                                                                                             
+                              <label class="block text-sm font-bold text-gray-700 mb-2">Content Goal</label>                                                                                                
+                              <select id="goal" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none bg-white">                                
+                                  <option value="download">Download Report/Whitepaper</option>                                                                                                              
+                                  <option value="demo">Watch Demo / Request Demo</option>                                                                                                                   
+                                  <option value="trial">Start Free Trial</option>                                                                                                                           
+                                  <option value="sales">Contact Sales</option>                                                                                                                              
+                                  <option value="event">Register for Event/Webinar</option>                                                                                                                 
+                              </select>                                                                                                                                                                     
+                          </div>                                                                                                                                                                            
+                      </div>                                                                                                                                                                                
+                  </div>                                                                                                                                                                                    
+                                                                                                                                                                                                            
+                  <!-- Content Input -->                                                                                                                                                                    
+                  <div class="bg-white rounded-lg shadow-md p-6">                                                                                                                                           
+                      <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">                                                                                                             
+                          <span>📝</span> Your Content                                                                                                                                                      
+                      </h3>                                                                                                                                                                                 
+                      <textarea id="content" rows="14" placeholder="Paste your marketing email or content here..."                                                                                          
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-zendesk-teal focus:outline-none font-mono text-sm"></textarea>                            
+                                                                                                                                                                                                            
+                      <button id="analyze-btn" onclick="analyzeContent()"                                                                                                                                   
+                              class="w-full mt-4 bg-zendesk-navy hover:bg-zendesk-teal text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-200 transform hover:scale-105">              
+                          <span id="btn-normal">🔍 Analyze Content</span>                                                                                                                                   
+                          <span id="btn-thinking" class="hidden thinking">🤔 Analyzing...</span>                                                                                                            
+                      </button>                                                                                                                                                                             
+                  </div>                                                                                                                                                                                    
+              </div>                                                                                                                                                                                        
+                                                                                                                                                                                                            
+              <!-- RIGHT COLUMN: AI ANALYSIS -->                                                                                                                                                            
+              <div>                                                                                                                                                                                         
+                  <h2 class="text-2xl font-bold text-zendesk-navy mb-6">AI Analysis</h2>                                                                                                                    
+                                                                                                                                                                                                            
+                  <!-- Placeholder -->                                                                                                                                                                      
+                  <div id="placeholder" class="bg-white rounded-lg shadow-md p-12 text-center text-gray-400">                                                                                               
+                      <svg class="w-20 h-20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">                                                                                            
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0      
+  117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>                                                                                     
+                      </svg>                                                                                                                                                                                
+                      <p class="text-lg font-medium">Ready to analyze</p>                                                                                                                                   
+                      <p class="text-sm mt-2">Select persona and paste content</p>                                                                                                                          
+                  </div>                                                                                                                                                                                    
+                                                                                                                                                                                                            
+                  <!-- Results Container -->                                                                                                                                                                
+                  <div id="results" class="hidden space-y-6"></div>                                                                                                                                         
+              </div>                                                                                                                                                                                        
+          </div>                                            
+      </div>                                                                                                                                                                                                
+                                                            
+      <script>                                                                                                                                                                                              
+          // ============================================   
+          // CONFIGURATION - Update this token before deploying to GitHub                                                                                                                                   
+          // WARNING: This token will be visible in the source code                                                                                                                                         
+          // ============================================                                                                                                                                                   
+          const ZENDESK_AI_TOKEN = 'XqQNVwde4KczesvRDfVhv6QHBRfC';                                                                                                                                            
+                                                                                                                                                                                                            
+          const INDUSTRY_CONTEXT = {                                                                                                                                                                        
+              'all': { focus: 'Universal CX Excellence', keywords: 'CSAT, Resolution, Agent Efficiency, Customer Retention' },                                                                              
+              'retail': { focus: 'Scale without Sacrifice', keywords: 'Peak Season (Black Friday), Omnichannel Support, Social Commerce' },                                                                 
+              'manufacturing': { focus: 'Partner & Supply Chain Support', keywords: 'Technical Documentation, Multi-tier Support, Product Training' },                                                      
+              'finance': { focus: 'Trust and Compliance', keywords: 'Fraud Prevention, KYC/AML, Audit Trails, Secure Authentication' },                                                                     
+              'media': { focus: 'Audience Retention', keywords: 'Live Event Support, Content Access Issues, Subscription Management' },                                                                     
+              'government': { focus: 'Accessibility & Compliance', keywords: 'WCAG 2.1, Multi-language Support, Public Records Requests' },                                                                 
+              'healthcare': { focus: 'HIPAA & Patient Experience', keywords: 'PHI Protection, Appointment Scheduling, Insurance Verification' },                                                            
+              'technology': { focus: 'Technical Support at Scale', keywords: 'API Documentation, Developer Support, Product Integrations' },                                                                
+              'consumer-services': { focus: 'High-Volume Service Delivery', keywords: 'Self-Service, Mobile-First, Quick Resolution' },                                                                     
+              'corporate-services': { focus: 'B2B Relationships', keywords: 'Account Management, SLA Compliance, Executive Escalations' }                                                                   
+          };                                                                                                                                                                                                
+                                                                                                                                                                                                            
+          const COMPETITIVE_CONTEXT = `COMPETITIVE LANDSCAPE (For Context):                                                                                                                                 
+  - Downmarket/Niche (Intercom/Freshdesk): Fragmented journeys, shallow reporting, fails at scale
+  - Legacy Enterprise (Salesforce/ServiceNow): Overcomplicated, services-heavy, requires dev army                                                                                                           
+  - DIY/Point Solutions: Data silos, high token costs, lacking service-first training (Zendesk: 18B+ interactions)`;                                                                                        
+                                                                                                                                                                                                            
+          const AI_CONFIG = {                                                                                                                                                                               
+              endpoint: 'https://ai-gateway.zende.sk/bedrock/model/us.anthropic.claude-sonnet-4-6/invoke'                                                                                                   
+          };                                                                                                                                                                                                
+                                                                                                                                                                                                            
+                                                                                                                                                                                                            
+          async function analyzeContent() {                                                                                                                                                                 
+              const content = document.getElementById('content').value.trim();                                                                                                                              
+              const personaTitle = document.getElementById('persona').value.trim();                                                                                                                         
+                                                                                                                                                                                                            
+              if (!personaTitle) {                                                                                                                                                                          
+                  alert('Please enter a persona title/role');                                                                                                                                               
+                  return;                                                                                                                                                                                   
+              }                                             
+              if (!content) {                                                                                                                                                                               
+                  alert('Please paste content to analyze');                                                                                                                                                 
+                  return;                                                                                                                                                                                   
+              }                                                                                                                                                                                             
+                                                                                                                                                                                                            
+              // Check if token is configured                                                                                                                                                               
+              if (ZENDESK_AI_TOKEN === 'YOUR_ZENDESK_AI_TOKEN_HERE') {
+                  alert('Error: Zendesk AI token not configured. Please update the token in the code before deploying.');                                                                                   
+                  return;                                                                                                                                                                                   
+              }                                                                                                                                                                                             
+                                                                                                                                                                                                            
+              // Get context                                                                                                                                                                                
+              const personaContext = document.getElementById('persona-context').value.trim();                                                                                                               
+              const segment = document.getElementById('segment').value;                                                                                                                                     
+              const industryKey = document.getElementById('industry').value;                                                                                                                                
+              const industry = INDUSTRY_CONTEXT[industryKey];                                                                                                                                               
+              const relationship = document.getElementById('relationship').value;                                                                                                                           
+              const goal = document.getElementById('goal').value;                                                                                                                                           
+                                                                                                                                                                                                            
+              // Show loading                                                                                                                                                                               
+              const button = document.getElementById('analyze-btn');                                                                                                                                        
+              button.disabled = true;                                                                                                                                                                       
+              document.getElementById('btn-normal').classList.add('hidden');                                                                                                                                
+              document.getElementById('btn-thinking').classList.remove('hidden');                                                                                                                           
+              document.getElementById('placeholder').classList.add('hidden');                                                                                                                               
+                                                                                                                                                                                                            
+              try {                                                                                                                                                                                         
+                  const prompt = buildZendeskPrompt(personaTitle, personaContext, segment, industry, relationship, goal, content);                                                                          
+                  const analysis = await callAI(ZENDESK_AI_TOKEN, prompt);                                                                                                                                  
+                  displayResults(analysis, personaTitle);                                                                                                                                                   
+              } catch (error) {                                                                                                                                                                             
+                  console.error('Error:', error);                                                                                                                                                           
+                  showError(error);                                                                                                                                                                         
+              } finally {                                                                                                                                                                                   
+                  button.disabled = false;                  
+                  document.getElementById('btn-normal').classList.remove('hidden');                                                                                                                         
+                  document.getElementById('btn-thinking').classList.add('hidden');                                                                                                                          
+              }                                                                                                                                                                                             
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+          function buildZendeskPrompt(personaTitle, personaContext, segment, industry, relationship, goal, content) {                                                                                       
+              const segmentContext = segment === 'all' ? 'all company sizes' :
+                                   segment === 'digital' ? 'small businesses (1-49 employees)' :                                                                                                            
+                                   segment === 'corp' ? 'mid-market companies (50-1,499 employees)' :                                                                                                       
+                                   'enterprise organizations (1,500+ employees)';                                                                                                                           
+                                                                                                                                                                                                            
+              const additionalContext = personaContext ? `\n\nADDITIONAL PERSONA CONTEXT:\n${personaContext}` : '';                                                                                         
+                                                                                                                                                                                                            
+              return `You are a ${personaTitle} who is a ${relationship} evaluating Zendesk. You work with ${segmentContext}. You are BUSY and SKEPTICAL of vendor marketing.                               
+                                                            
+  INDUSTRY CONTEXT:                                                                                                                                                                                         
+  Industry Focus: ${industry.focus}                         
+  What Matters to You: ${industry.keywords}${additionalContext}                                                                                                                                             
+                                                                                                                                                                                                            
+  ${COMPETITIVE_CONTEXT}                                                                                                                                                                                    
+                                                                                                                                                                                                            
+  EVALUATION MISSION:                                                                                                                                                                                       
+  This content is trying to get you to ${goal}. Evaluate if it:
+  1. Addresses specific pain points relevant to a ${personaTitle}                                                                                                                                           
+  2. Provides Zendesk-specific proof (not generic buzzwords)                                                                                                                                                
+  3. Speaks to your industry's key concerns (${industry.keywords})                                                                                                                                          
+  4. Appropriate for ${segmentContext}                                                                                                                                                                      
+                                                                                                                                                                                                            
+  CRITICAL RULES:                                                                                                                                                                                           
+  - DO NOT complain about length unless egregious (500+ words)                                                                                                                                              
+  - FLAG if content mentions "deflection" without "resolution" (Zendesk = resolutions, not just deflection)                                                                                                 
+  - FLAG if AI is mentioned without "governance/control" language                                                                                                                                           
+  - FLAG generic buzzwords ("Revolutionary," "Seamless," "Cutting-edge") unless backed by specific Zendesk stats (e.g., "30% automation Day 1")                                                             
+  - COMPARE to competitive weaknesses when relevant (e.g., "Unlike Intercom's fragmented approach...")                                                                                                      
+                                                                                                                                                                                                            
+  CONTENT TO ANALYZE:                                                                                                                                                                                       
+  ${content}                                                
+                                                                                                                                                                                                            
+  RESPOND IN THIS FORMAT:                                                                                                                                                                                   
+   
+  DELETE DECISION: [Yes/Maybe/No]                                                                                                                                                                           
+  REASON: [One sentence - specific to why a ${personaTitle} would/wouldn't engage]
+                                                                                                                                                                                                            
+  VALUE GAP:                                                                                                                                                                                                
+  [What's missing that a ${personaTitle} needs? Be specific about Zendesk proof points missing.]                                                                                                            
+                                                                                                                                                                                                            
+  ZENDESK-SPECIFIC CRITIQUE:                                                                                                                                                                                
+  [Does this leverage Zendesk's strengths? Flag if it sounds generic/could be any vendor. Note if it misses competitive advantages vs. Intercom/Salesforce/DIY solutions.]                                  
+                                                                                                                                                                                                            
+  INDUSTRY ALIGNMENT:                                                                                                                                                                                       
+  [Does this speak to ${industry.focus}? Does it mention ${industry.keywords}? What's missing for this industry?]                                                                                           
+                                                                                                                                                                                                            
+  EYE-ROLL PHRASE:                                                                                                                                                                                          
+  QUOTE: "[Exact phrase]"                                                                                                                                                                                   
+  WHY IT FAILS FOR ME: [Why this undermines credibility for a ${personaTitle}]                                                                                                                              
+  ZENDESK FIX: [How to rewrite with Zendesk-specific proof]                                                                                                                                                 
+                                                                                                                                                                                                            
+  SURGICAL EDIT:                                                                                                                                                                                            
+  ORIGINAL: "[Most important sentence]"                                                                                                                                                                     
+  REWRITTEN: "[Version with specific Zendesk value relevant to ${personaTitle}]"                                                                                                                            
+  WHY BETTER: [What makes this resonate with the role]                                                                                                                                                      
+                                                                                                                                                                                                            
+  RESONANCE SCORE: [1-10]                                                                                                                                                                                   
+                                                                                                                                                                                                            
+  BOTTOM LINE: [One actionable fix to make this Zendesk-competitive and persona-relevant]`;                                                                                                                 
+          }                                                 
+                                                                                                                                                                                                            
+          async function callAI(token, prompt) {                                                                                                                                                            
+              const response = await fetch(AI_CONFIG.endpoint, {
+                  method: 'POST',                                                                                                                                                                           
+                  headers: {                                                                                                                                                                                
+                      'anthropic_version': 'bedrock-2023-05-31',                                                                                                                                            
+                      'Content-Type': 'application/json',                                                                                                                                                   
+                      'Authorization': `Bearer ${token}`                                                                                                                                                    
+                  },                                                                                                                                                                                        
+                  body: JSON.stringify({                                                                                                                                                                    
+                      anthropic_version: 'bedrock-2023-05-31',                                                                                                                                              
+                      max_tokens: 4000,                                                                                                                                                                     
+                      messages: [{                                                                                                                                                                          
+                          role: 'user',                                                                                                                                                                     
+                          content: prompt                                                                                                                                                                   
+                      }]                                    
+                  })                                                                                                                                                                                        
+              });                                           
+                                                                                                                                                                                                            
+              if (!response.ok) {                                                                                                                                                                           
+                  const errorText = await response.text();                                                                                                                                                  
+                  throw new Error(`API Error (${response.status}): ${errorText}`);                                                                                                                          
+              }                                                                                                                                                                                             
+                                                                                                                                                                                                            
+              const data = await response.json();                                                                                                                                                           
+              return data.content[0].text;                  
+          }                                                                                                                                                                                                 
+                                                            
+          function displayResults(text, personaTitle) {                                                                                                                                                     
+              const parsed = parseAnalysis(text);           
+              const scoreClass = parsed.score <= 3 ? 'text-red-600' : parsed.score <= 6 ? 'text-yellow-600' : 'text-green-600';                                                                             
+                                                                                                                                                                                                            
+              const resultsContainer = document.getElementById('results');                                                                                                                                  
+              resultsContainer.innerHTML = `                                                                                                                                                                
+                  <div class="fade-in bg-white rounded-lg shadow-xl p-8 border-t-8 border-zendesk-teal">                                                                                                    
+                      <div class="flex justify-between items-start mb-6">                                                                                                                                   
+                          <div>                                                                                                                                                                             
+                              <h3 class="text-2xl font-bold text-zendesk-teal mb-1">Zendesk Persona Analysis</h3>                                                                                           
+                              <p class="text-lg text-gray-700 font-semibold">${personaTitle}</p>                                                                                                            
+                          </div>                                                                                                                                                                            
+                          <div class="text-center bg-gray-50 rounded-lg p-4">                                                                                                                               
+                              <p class="text-xs text-gray-500 font-bold mb-1">RESONANCE</p>                                                                                                                 
+                              <p class="text-5xl font-bold ${scoreClass}">${parsed.score}/10</p>                                                                                                            
+                          </div>                                                                                                                                                                            
+                      </div>                                                                                                                                                                                
+                                                                                                                                                                                                            
+                      <div class="mb-6 p-5 bg-red-50 border-l-4 border-red-600 rounded-r">                                                                                                                  
+                          <p class="text-xs font-bold text-gray-700 mb-1 uppercase">🗑️  Delete Decision</p>                                                                                                  
+                          <p class="text-lg font-bold text-red-700 mb-2">${parsed.deleteDecision}</p>                                                                                                       
+                          <p class="text-sm text-gray-700">${parsed.reason}</p>                                                                                                                             
+                      </div>                                                                                                                                                                                
+                                                                                                                                                                                                            
+                      <div class="space-y-4 mb-6">                                                                                                                                                          
+                          <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r">
+                              <p class="text-xs font-bold text-gray-700 mb-2 uppercase">📊 Value Gap</p>                                                                                                    
+                              <p class="text-sm text-gray-800 leading-relaxed">${parsed.valueGap}</p>                                                                                                       
+                          </div>                                                                                                                                                                            
+                                                                                                                                                                                                            
+                          <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r">                                                                                                                 
+                              <p class="text-xs font-bold text-gray-700 mb-2 uppercase">🎯 Zendesk-Specific Critique</p>                                                                                    
+                              <p class="text-sm text-gray-800 leading-relaxed">${parsed.zendeskCritique}</p>                                                                                                
+                          </div>                                                                                                                                                                            
+                                                                                                                                                                                                            
+                          <div class="p-4 bg-purple-50 border-l-4 border-purple-500 rounded-r">                                                                                                             
+                              <p class="text-xs font-bold text-gray-700 mb-2 uppercase">🏭 Industry Alignment</p>                                                                                           
+                              <p class="text-sm text-gray-800 leading-relaxed">${parsed.industryAlignment}</p>                                                                                              
+                          </div>                                                                                                                                                                            
+                                                                                                                                                                                                            
+                          <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r">                                                                                                             
+                              <p class="text-xs font-bold text-gray-700 mb-2 uppercase">🙄 Eye-Roll Phrase</p>                                                                                              
+                              <p class="text-sm text-gray-700 italic mb-2">"${parsed.eyeRoll.quote}"</p>                                                                                                    
+                              <p class="text-xs text-gray-600 mb-2"><strong>Why it fails:</strong> ${parsed.eyeRoll.why}</p>                                                                                
+                              <p class="text-xs text-green-700"><strong>Zendesk Fix:</strong> ${parsed.eyeRoll.fix}</p>                                                                                     
+                          </div>                                                                                                                                                                            
+                      </div>                                                                                                                                                                                
+                                                                                                                                                                                                            
+                      <div class="mb-6 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200 rounded-lg p-5">                                                                                 
+                          <p class="text-xs font-bold text-gray-700 mb-3 uppercase flex items-center gap-2">                                                                                                
+                              <span class="text-lg">✂️ </span> Surgical Edit                                                                                                                                 
+                          </p>                                                                                                                                                                              
+                          <div class="mb-3">                                                                                                                                                                
+                              <p class="text-xs font-semibold text-gray-600 mb-1">Original:</p>                                                                                                             
+                              <p class="text-sm text-gray-800 italic border-l-2 border-red-400 pl-3 py-1">"${parsed.surgicalEdit.original}"</p>                                                             
+                          </div>                                                                                                                                                                            
+                          <div class="mb-3">                                                                                                                                                                
+                              <p class="text-xs font-semibold text-gray-600 mb-1">Rewritten:</p>                                                                                                            
+                              <p class="text-sm text-gray-800 font-medium border-l-2 border-green-500 pl-3 py-1">"${parsed.surgicalEdit.rewritten}"</p>                                                     
+                          </div>                                                                                                                                                                            
+                          <div class="text-xs text-gray-600 bg-white rounded p-2">                                                                                                                          
+                              <strong>Why it's better:</strong> ${parsed.surgicalEdit.why}                                                                                                                  
+                          </div>                                                                                                                                                                            
+                      </div>                                                                                                                                                                                
+                                                                                                                                                                                                            
+                      <div class="p-5 bg-gradient-to-r from-zendesk-teal to-zendesk-navy text-white rounded-lg">                                                                                            
+                          <p class="text-xs font-bold mb-2 uppercase">🔧 Bottom Line</p>                                                                                                                    
+                          <p class="text-base leading-relaxed">${parsed.bottomLine}</p>                                                                                                                     
+                      </div>                                                                                                                                                                                
+                  </div>                                                                                                                                                                                    
+              `;                                                                                                                                                                                            
+              resultsContainer.classList.remove('hidden');                                                                                                                                                  
+              resultsContainer.scrollIntoView({ behavior: 'smooth' });                                                                                                                                      
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+          function parseAnalysis(text) {                                                                                                                                                                    
+              return {                                      
+                  deleteDecision: extract(text, 'DELETE DECISION:', 'REASON:'),                                                                                                                             
+                  reason: extract(text, 'REASON:', 'VALUE GAP:'),                                                                                                                                           
+                  valueGap: extract(text, 'VALUE GAP:', 'ZENDESK-SPECIFIC CRITIQUE:'),                                                                                                                      
+                  zendeskCritique: extract(text, 'ZENDESK-SPECIFIC CRITIQUE:', 'INDUSTRY ALIGNMENT:'),                                                                                                      
+                  industryAlignment: extract(text, 'INDUSTRY ALIGNMENT:', 'EYE-ROLL PHRASE:'),                                                                                                              
+                  eyeRoll: {                                                                                                                                                                                
+                      quote: extract(text, 'QUOTE:', 'WHY IT FAILS FOR ME:'),                                                                                                                               
+                      why: extract(text, 'WHY IT FAILS FOR ME:', 'ZENDESK FIX:'),                                                                                                                           
+                      fix: extract(text, 'ZENDESK FIX:', 'SURGICAL EDIT:')                                                                                                                                  
+                  },                                                                                                                                                                                        
+                  surgicalEdit: {                                                                                                                                                                           
+                      original: extract(text, 'ORIGINAL:', 'REWRITTEN:'),                                                                                                                                   
+                      rewritten: extract(text, 'REWRITTEN:', 'WHY BETTER:'),                                                                                                                                
+                      why: extract(text, 'WHY BETTER:', 'RESONANCE SCORE:')                                                                                                                                 
+                  },                                                                                                                                                                                        
+                  score: parseInt(extract(text, 'RESONANCE SCORE:', 'BOTTOM LINE:').match(/\d+/)?.[0] || '5'),                                                                                              
+                  bottomLine: extract(text, 'BOTTOM LINE:', null)                                                                                                                                           
+              };                                                                                                                                                                                            
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+          function extract(text, start, end) {                                                                                                                                                              
+              const startIdx = text.indexOf(start);                                                                                                                                                         
+              if (startIdx === -1) return '';                                                                                                                                                               
+              const contentStart = startIdx + start.length;                                                                                                                                                 
+              const endIdx = end ? text.indexOf(end, contentStart) : text.length;                                                                                                                           
+              return text.substring(contentStart, endIdx !== -1 ? endIdx : text.length).trim()                                                                                                              
+                  .replace(/^["'\[\]]+|["'\[\]]+$/g, '');                                                                                                                                                   
+          }                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+          function showError(error) {                                                                                                                                                                       
+              document.getElementById('results').innerHTML = `                                                                                                                                              
+                  <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">                                                                                                                          
+                      <h3 class="text-lg font-bold text-red-800 mb-2">❌ Error</h3>                                                                                                                         
+                      <p class="text-sm text-red-700">${error.message}</p>                                                                                                                                  
+                  </div>                                                                                                                                                                                    
+              `;                                                                                                                                                                                            
+              document.getElementById('results').classList.remove('hidden');                                                                                                                                
+          }                                                                                                                                                                                                 
+      </script>                                                                                                                                                                                             
+  </body>                                                                                                                                                                                                   
+  </html>                  
